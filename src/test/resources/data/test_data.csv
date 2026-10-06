@@ -1,0 +1,17 @@
+username,password,role,expectedStatus,testScenario
+admin,admin123,ADMIN,200,Login exitoso con credenciales válidas
+user_test,test1234,USER,200,Login con usuario de prueba
+invalid_user,wrongpass,UNKNOWN,401,Login con credenciales inválidas
+,password123,UNKNOWN,400,Login sin username
+user_empty,,UNKNOWN,400,Login sin password
+, ,UNKNOWN,400,Login sin credenciales
+sql_injection_user,' OR '1'='1,UNKNOWN,401,SQL Injection en username
+sql_injection_pass,' OR '1'='1,UNKNOWN,401,SQL Injection en password
+xss_payload,<script>alert(1)</script>,UNKNOWN,400,XSS en username
+special_chars_user,user@domain#$,UNKNOWN,400,Caracteres especiales en password
+admin_token_expired,expired_token_value,ADMIN,401,Token expirado
+borrower_001,borrower123,borrower,200,Prestatario válido
+fraud_engine_user,fraud123,FRAUD_ENGINE,200,Usuario motor antifraude
+risk_bureau_user,risk123,RISK_BUREAU,200,Usuario buró de riesgos
+core_bank_user,core123,CORE_BANK,200,Usuario core bancario
+originator_user,originator123,ORIGINATOR,200,Originador de créditos
